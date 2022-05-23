@@ -1,16 +1,16 @@
 package com.maktab74.domain;
 
 public  class Shoes extends Product {
-    private String size;
+    private String sizeShoes;
     private String color;
     private String typeShoes;
 
-    public String getSize() {
-        return size;
+    public String getSizeShoes() {
+        return sizeShoes;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setSizeShoes(String sizeShoes) {
+        this.sizeShoes = sizeShoes;
     }
 
     public String getColor() {

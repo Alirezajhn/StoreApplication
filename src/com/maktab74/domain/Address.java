@@ -1,6 +1,6 @@
 package com.maktab74.domain;
 
-public class Address {
+public class Address extends Base{
     private String province;
     private String city;
     private String street;

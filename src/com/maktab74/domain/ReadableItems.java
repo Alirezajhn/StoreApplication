@@ -5,14 +5,14 @@ public  class ReadableItems extends Product{
     private String brief;
     private String content;
     private String publisher;
-    private String type;
+    private String typeItems;
 
-    public String getType() {
-        return type;
-    }
+   public String getTypeItems() {
+       return typeItems;
+   }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypeItems(String typeItems) {
+        this.typeItems = typeItems;
     }
 
     public String getTitle() {

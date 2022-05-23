@@ -3,7 +3,7 @@ package com.maktab74.domain;
 public class Basket extends Base{
     private int  userId;
     private int productId;
-    private int count;
+    private int numberItem;
     private String category;
 
     public int getUserId() {
@@ -22,12 +22,12 @@ public class Basket extends Base{
         this.productId = productId;
     }
 
-    public int getCount() {
-        return count;
+    public int getNumberItem() {
+        return numberItem;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setNumberItem(int numberItem) {
+        this.numberItem = numberItem;
     }
 
     public String getCategory() {
