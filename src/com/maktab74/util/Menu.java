@@ -30,6 +30,25 @@ public class Menu {
                // "welcome , your national code :" + currentUser.getNationalCode());
 
     }
+    public void showShortUsernameMessage() {
+        System.out.println("this is a short username!!!");
+    }
+
+    public void showUnderlineErrorMessage() {
+        System.out.println("the first and last username should not be underline!!!");
+    }
+    public void showChangePasswordMessage() {
+        System.out.println("1: change password");
+        System.out.println("2: exit");
+        System.out.print("plz choose a number:");
+    }
+    public void showNotStandardUsernameMessage() {
+        System.out.println("this is not a standard username!!!");
+    }
+
+    public void showTakenUsernameMessage() {
+        System.out.println("this username already is taken!!!");
+    }
 
     public void showLoginFailMessage() {
         System.out.println("username or password is incorrect");

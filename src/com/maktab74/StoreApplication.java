@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-/*
+
 public class StoreApplication {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-       ApplicationContext context = new ApplicationContext();
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, ParseException {
+        ApplicationContext context = new ApplicationContext();
 
         context.getDatabaseInitializer().init();
 
@@ -33,7 +33,6 @@ public class StoreApplication {
                 }
             }
         }
-
     }
 
     private static void redirectUser(int selectedNumber, ApplicationContext context)
@@ -43,8 +42,8 @@ public class StoreApplication {
             if (isLoginSuccess) {
                 redirectUserToPanel(context);
             }
-        } else if (selectedNumber == 2){
-            signup(context);
+        } else if (selectedNumber == 2) {
+            signUp(context);
         } else {
 
         }
@@ -71,46 +70,32 @@ public class StoreApplication {
             return false;
         }
     }
-    private static void signup(ApplicationContext context) throws SQLException, ParseException {
+
+    private static void signUp(ApplicationContext context) throws SQLException, ParseException {
         boolean flag = false;
         User user = new User();
         context.getMenu().showFillInformationMessage();
-
         do {
             context.getMenu().showEnterUsernameMessage();
             user.setUsername(context.getStringScanner().nextLine());
             flag = checkUsername(context, user.getUsername());
-        }while (flag);
-
-        do {
-            context.getMenu().showEnterNationalCodeMessage();
-            user.setNationalCode(context.getStringScanner().nextLine());
-            flag = checkNationalCode(context, user.getNationalCode());
-        }while (flag);
-
-
-        user.setPassword(user.getNationalCode());
-
-        context.getMenu().showEnterBirthDateMessage();
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(context.getStringScanner().nextLine());
-        user.setBirthDate(date);
+        } while (flag);
 
         user = context.getUserRepository().insert(user);
 
         System.out.println(user);
     }
-    private static boolean checkUsername(ApplicationContext context, String username) throws SQLException{
+
+    private static boolean checkUsername(ApplicationContext context, String username) throws SQLException {
         boolean find = false;
         if (username.length() < 5) {
             context.getMenu().showShortUsernameMessage();
             find = true;
-        }
-        else {
-            if (username.charAt(0) == '_' || username.charAt(username.length()-1) == '_'){
+        } else {
+            if (username.charAt(0) == '_' || username.charAt(username.length() - 1) == '_') {
                 context.getMenu().showUnderlineErrorMessage();
                 find = true;
-            }
-            else {
+            } else {
                 find = checkChar(username);
                 if (find)
                     context.getMenu().showNotStandardUsernameMessage();
@@ -123,6 +108,7 @@ public class StoreApplication {
         }
         return find;
     }
+
     private static void redirectUserToPanel(ApplicationContext context) throws SQLException {
         context.getMenu().showUserPanelMenu();
         boolean isSelectedNumberInValid = true;
@@ -141,4 +127,56 @@ public class StoreApplication {
             }
         }
     }
-}*/
+
+    private static boolean checkForDuplicateUsername(ApplicationContext context, String username) throws SQLException {
+        if (context.getUserRepository().getUserByUsername(username) == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean checkChar(String username) {
+        boolean flag = false;
+        int ascii;
+        for (int chararcter = 0; chararcter < username.length(); chararcter++) {
+            ascii = (int) username.charAt(chararcter);
+            if (ascii < 48 || ascii > 57) {
+                if (ascii < 65 || ascii > 90) {
+                    if (ascii < 97 || ascii > 122) {
+                        if (ascii != 95) {
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return flag;
+    }
+
+
+    private static void getEditCurrentUserPassword(ApplicationContext context) throws SQLException {
+        User user = context.getSecurityContext().getCurrentUser();
+
+        context.getMenu().showEnterPasswordMessage();
+        user.setPassword(context.getStringScanner().nextLine());
+
+        context.getUserRepository().update(user);
+    }
+
+    private static void showUserSelectedPage(int selectedNumber, ApplicationContext context) throws SQLException {
+        if (selectedNumber == 1) {
+            context.getMenu().showUserProfile(
+                    context.getSecurityContext().getCurrentUser()
+            );
+            context.getMenu().showChangePasswordMessage();
+            selectedNumber = context.getNumberScanner().nextInt();
+            if (selectedNumber == 1)
+                getEditCurrentUserPassword(context);
+        } else if (selectedNumber == 2) {
+
+        } else {
+
+        }
+    }
+}

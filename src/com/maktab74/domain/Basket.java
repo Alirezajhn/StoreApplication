@@ -6,6 +6,14 @@ public class Basket extends Base{
     private int numberItem;
     private String category;
 
+    public Basket(int id, int userId, int productId, int numberItem, String category) {
+        super(id);
+        this.userId = userId;
+        this.productId = productId;
+        this.numberItem = numberItem;
+        this.category = category;
+    }
+
     public int getUserId() {
         return userId;
     }

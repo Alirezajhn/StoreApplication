@@ -5,6 +5,13 @@ public  class Shoes extends Product {
     private String color;
     private String typeShoes;
 
+    public Shoes(int id, int unit, int price, String sizeShoes, String color, String typeShoes) {
+        super(id, unit, price);
+        this.sizeShoes = sizeShoes;
+        this.color = color;
+        this.typeShoes = typeShoes;
+    }
+
     public String getSizeShoes() {
         return sizeShoes;
     }

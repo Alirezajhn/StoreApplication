@@ -4,6 +4,12 @@ public abstract class Product extends Base{
     private int Unit;
     private int Price;
 
+    public Product(int id, int unit, int price) {
+        super(id);
+        Unit = unit;
+        Price = price;
+    }
+
     public int getUnit() {
         return Unit;
     }

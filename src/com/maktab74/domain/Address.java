@@ -6,6 +6,14 @@ public class Address extends Base{
     private String street;
     private String postalCode;
 
+    public Address(int id, String province, String city, String street, String postalCode) {
+        super(id);
+        this.province = province;
+        this.city = city;
+        this.street = street;
+        this.postalCode = postalCode;
+    }
+
     public String getProvince() {
         return province;
     }

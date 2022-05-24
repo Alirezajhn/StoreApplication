@@ -7,7 +7,16 @@ public  class ReadableItems extends Product{
     private String publisher;
     private String typeItems;
 
-   public String getTypeItems() {
+    public ReadableItems(int id, int unit, int price, String title, String brief, String content, String publisher, String typeItems) {
+        super(id, unit, price);
+        this.title = title;
+        this.brief = brief;
+        this.content = content;
+        this.publisher = publisher;
+        this.typeItems = typeItems;
+    }
+
+    public String getTypeItems() {
        return typeItems;
    }
 

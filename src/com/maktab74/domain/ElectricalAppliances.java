@@ -5,6 +5,13 @@ public abstract class ElectricalAppliances extends Product {
     private String brand;
     private String model;
 
+    public ElectricalAppliances(int id, int unit, int price, String powerSource, String brand, String model) {
+        super(id, unit, price);
+        this.powerSource = powerSource;
+        this.brand = brand;
+        this.model = model;
+    }
+
     public String getPowerSource() {
         return powerSource;
     }

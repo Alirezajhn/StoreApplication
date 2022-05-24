@@ -9,11 +9,8 @@ public class User extends Base {
     private String email;
     private Address address;
 
-    public User() {
-
-    }
-
-    public User(String username, String password, String firstName, String lastName, String phoneNumber, String email, Address address) {
+    public User(int id, String username, String password, String firstName, String lastName, String phoneNumber, String email, Address address) {
+        super(id);
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -21,6 +18,19 @@ public class User extends Base {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", address=" + address +
+                '}';
     }
 
     public String getUsername() {
