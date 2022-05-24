@@ -7,9 +7,12 @@ public class User extends Base {
     private String lastName;
     private String phoneNumber;
     private String email;
-    private Address address;
+    private String province;
+    private String city;
+    private String street;
 
-    public User(int id, String username, String password, String firstName, String lastName, String phoneNumber, String email, Address address) {
+
+    public User(int id, String username, String password, String firstName, String lastName, String phoneNumber, String email, String province, String city, String street, String postalCode) {
         super(id);
         this.username = username;
         this.password = password;
@@ -17,7 +20,10 @@ public class User extends Base {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.address = address;
+        this.province = province;
+        this.city = city;
+        this.street = street;
+        this.postalCode = postalCode;
     }
 
     @Override
@@ -29,9 +35,48 @@ public class User extends Base {
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", address=" + address +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", postalCode='" + postalCode + '\'' +
                 '}';
     }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    private String postalCode;
+
+
 
     public String getUsername() {
         return username;
@@ -81,11 +126,4 @@ public class User extends Base {
         this.email = email;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 }
