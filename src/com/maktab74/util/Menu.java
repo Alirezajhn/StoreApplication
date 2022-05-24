@@ -26,9 +26,6 @@ public class Menu {
 
     public void showLoginSuccessMessage(User currentUser) {
         System.out.println("login successfully done");
-        //System.out.println(
-               // "welcome , your national code :" + currentUser.getNationalCode());
-
     }
     public void showShortUsernameMessage() {
         System.out.println(" short username!!!");
@@ -67,7 +64,7 @@ public class Menu {
     }
 
     public void showIncorrectNumberMessage() {
-        System.out.println("plz enter right number");
+        System.out.println("please enter right number");
     }
 
     public void showLogoutMessage() {
@@ -78,4 +75,35 @@ public class Menu {
         System.out.println("username: " + currentUser.getUsername());
     }
 
+    public void showEnterFirstNameMessage() {
+        System.out.println("please enter your firstName: ");
+    }
+
+    public void showEnterLastNameMessage() {
+        System.out.println("please enter your lastName: ");
+    }
+
+    public void showEnterPhoneNumberMessage() {
+        System.out.println("please enter your phoneNumber: ");
+    }
+
+    public void showEnterEmailMessage() {
+        System.out.println("please enter your Email: ");
+    }
+
+    public void showEnterProvinceMessage() {
+        System.out.println("please enter your province: ");
+    }
+
+    public void showEnterCityMessage() {
+        System.out.println("please enter your city: ");
+    }
+
+    public void showEnterStreetMessage() {
+        System.out.println("please enter your street: ");
+    }
+
+    public void showEnterPostalCodeMessage() {
+        System.out.println("please enter your postalCode: ");
+    }
 }

@@ -14,7 +14,7 @@ public class UserRepository {
     public User insert(User user) throws SQLException {
         String insertQuery = "insert into user(" +
                 "username, phonenumber,firstname,lastname,email,province,street,city,postalcode,password" +
-                ") values (? ,?, ?, ? ,? , ?, ? , ? , ?,?)";
+                ") values (? ,?, ?, ? ,? , ?, ? , ? , ?, ?)";
 
         PreparedStatement preparedStatement =
                 connection.prepareStatement(insertQuery);
@@ -65,7 +65,6 @@ public class UserRepository {
                     resultSet.getString(11)
             );
         }
-
         return null;
     }
 

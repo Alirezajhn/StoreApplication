@@ -76,6 +76,24 @@ public class StoreApplication {
         do {
             context.getMenu().showEnterUsernameMessage();
             user.setUsername(context.getStringScanner().nextLine());
+            context.getMenu().showEnterPasswordMessage();
+            user.setPassword(context.getStringScanner().nextLine());
+            context.getMenu().showEnterFirstNameMessage();
+            user.setFirstName(context.getStringScanner().nextLine());
+            context.getMenu().showEnterLastNameMessage();
+            user.setLastName(context.getStringScanner().nextLine());
+            context.getMenu().showEnterPhoneNumberMessage();
+            user.setPhoneNumber(context.getStringScanner().nextLine());
+            context.getMenu().showEnterEmailMessage();
+            user.setEmail(context.getStringScanner().nextLine());
+            context.getMenu().showEnterProvinceMessage();
+            user.setProvince(context.getStringScanner().nextLine());
+            context.getMenu().showEnterCityMessage();
+            user.setCity(context.getStringScanner().nextLine());
+            context.getMenu().showEnterStreetMessage();
+            user.setStreet(context.getStringScanner().nextLine());
+            context.getMenu().showEnterPostalCodeMessage();
+            user.setPostalCode(context.getStringScanner().nextLine());
             flag = checkUsername(context, user.getUsername());
         } while (flag);
 
