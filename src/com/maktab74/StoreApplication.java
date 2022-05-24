@@ -19,7 +19,7 @@ public class StoreApplication {
             boolean isSelectedNumberInValid = true;
             while (isSelectedNumberInValid) {
                 int selectedNumber = context.getNumberScanner().nextInt();
-                if (selectedNumber == 1 || selectedNumber == 2 ) {
+                if (selectedNumber == 1 || selectedNumber == 2) {
                     isSelectedNumberInValid = false;
                     redirectUser(selectedNumber, context);
                 } else if (selectedNumber == 3) {
@@ -42,10 +42,7 @@ public class StoreApplication {
             }
         } else if (selectedNumber == 2) {
             signUp(context);
-        } else {
-
         }
-
     }
 
     private static boolean login(ApplicationContext context) throws SQLException {
@@ -76,25 +73,35 @@ public class StoreApplication {
         do {
             context.getMenu().showEnterUsernameMessage();
             user.setUsername(context.getStringScanner().nextLine());
+            flag = checkUsername(context, user.getUsername());
+
             context.getMenu().showEnterPasswordMessage();
             user.setPassword(context.getStringScanner().nextLine());
+
             context.getMenu().showEnterFirstNameMessage();
             user.setFirstName(context.getStringScanner().nextLine());
+
             context.getMenu().showEnterLastNameMessage();
             user.setLastName(context.getStringScanner().nextLine());
+
             context.getMenu().showEnterPhoneNumberMessage();
             user.setPhoneNumber(context.getStringScanner().nextLine());
+
             context.getMenu().showEnterEmailMessage();
             user.setEmail(context.getStringScanner().nextLine());
+
             context.getMenu().showEnterProvinceMessage();
             user.setProvince(context.getStringScanner().nextLine());
+
             context.getMenu().showEnterCityMessage();
             user.setCity(context.getStringScanner().nextLine());
+
             context.getMenu().showEnterStreetMessage();
             user.setStreet(context.getStringScanner().nextLine());
+
             context.getMenu().showEnterPostalCodeMessage();
             user.setPostalCode(context.getStringScanner().nextLine());
-            flag = checkUsername(context, user.getUsername());
+
         } while (flag);
 
         user = context.getUserRepository().insert(user);
@@ -104,24 +111,13 @@ public class StoreApplication {
 
     private static boolean checkUsername(ApplicationContext context, String username) throws SQLException {
         boolean find = false;
-        if (username.length() < 5) {
-            context.getMenu().showShortUsernameMessage();
-            find = true;
-        } else {
-            if (username.charAt(0) == '_' || username.charAt(username.length() - 1) == '_') {
-                context.getMenu().showUnderlineErrorMessage();
-                find = true;
-            } else {
-                find = checkChar(username);
+            if (find)
+                context.getMenu().showNotStandardUsernameMessage();
+            else {
+                find = checkForDuplicateUsername(context, username);
                 if (find)
-                    context.getMenu().showNotStandardUsernameMessage();
-                else {
-                    find = checkForDuplicateUsername(context, username);
-                    if (find)
-                        context.getMenu().showTakenUsernameMessage();
-                }
+                    context.getMenu().showTakenUsernameMessage();
             }
-        }
         return find;
     }
 
@@ -149,25 +145,6 @@ public class StoreApplication {
             return true;
         }
         return false;
-    }
-
-    private static boolean checkChar(String username) {
-        boolean flag = false;
-        int ascii;
-        for (int chararcter = 0; chararcter < username.length(); chararcter++) {
-            ascii = (int) username.charAt(chararcter);
-            if (ascii < 48 || ascii > 57) {
-                if (ascii < 65 || ascii > 90) {
-                    if (ascii < 97 || ascii > 122) {
-                        if (ascii != 95) {
-                            flag = true;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-        return flag;
     }
 
 

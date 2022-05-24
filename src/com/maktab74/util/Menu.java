@@ -57,10 +57,10 @@ public class Menu {
 
     public void showUserPanelMenu() {
         System.out.println("1: show all products");
-        System.out.println("2: add product");
-        System.out.println("3: delete product");
+        System.out.println("2: add product from basket");
+        System.out.println("3: delete product from basket");
         System.out.println("4: logout");
-        System.out.print("plz choose a number:");
+        System.out.print("please choose a number:");
     }
 
     public void showIncorrectNumberMessage() {
