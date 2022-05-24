@@ -1,8 +1,12 @@
 package com.maktab74.domain;
 
-public abstract class Product extends Base{
+public abstract class Product extends Base {
     private int Unit;
     private int Price;
+
+    public Product() {
+
+    }
 
     public Product(int id, int unit, int price) {
         super(id);

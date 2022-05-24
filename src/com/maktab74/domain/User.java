@@ -10,7 +10,11 @@ public class User extends Base {
     private String province;
     private String city;
     private String street;
+    private String postalCode;
 
+    public User() {
+
+    }
 
     public User(int id, String username, String password, String firstName, String lastName, String phoneNumber, String email, String province, String city, String street, String postalCode) {
         super(id);
@@ -73,10 +77,6 @@ public class User extends Base {
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
-
-    private String postalCode;
-
-
 
     public String getUsername() {
         return username;
