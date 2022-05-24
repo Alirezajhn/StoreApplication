@@ -8,20 +8,20 @@ public class Menu {
         System.out.println("1: login");
         System.out.println("2: signUp");
         System.out.println("3: exit");
-        System.out.print("plz choose a number: ");
+        System.out.print("please choose a number: ");
 
     }
     //User
     public void showFillInformationMessage() {
-        System.out.println("plz fill your information");
+        System.out.println("please fill your information");
     }
 
     public void showEnterUsernameMessage() {
-        System.out.println("plz enter your username: ");
+        System.out.println("please enter your username: ");
     }
 
     public void showEnterPasswordMessage() {
-        System.out.println("plz enter your password: ");
+        System.out.println("please enter your password: ");
     }
 
     public void showLoginSuccessMessage(User currentUser) {
@@ -31,7 +31,7 @@ public class Menu {
 
     }
     public void showShortUsernameMessage() {
-        System.out.println("this is a short username!!!");
+        System.out.println(" short username!!!");
     }
 
     public void showUnderlineErrorMessage() {
@@ -55,13 +55,13 @@ public class Menu {
     }
 
     public void showExitMessage() {
-        System.out.println("Bye!!! have nice time");
+        System.out.println("goodbye!!! have a nice time");
     }
 
     public void showUserPanelMenu() {
-        System.out.println("1: show my profile");
-        System.out.println("2: show my articles");
-        System.out.println("3: add article");
+        System.out.println("1: show all products");
+        System.out.println("2: add product");
+        System.out.println("3: delete product");
         System.out.println("4: logout");
         System.out.print("plz choose a number:");
     }
@@ -76,8 +76,6 @@ public class Menu {
 
     public void showUserProfile(User currentUser) {
         System.out.println("username: " + currentUser.getUsername());
-       // System.out.println("national code: " + currentUser.getNationalCode());
-       // System.out.println("birth date: " + currentUser.getBirthDate());
     }
 
 }

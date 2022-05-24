@@ -5,8 +5,6 @@ import com.maktab74.util.ApplicationContext;
 
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class StoreApplication {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, ParseException {
@@ -21,10 +19,10 @@ public class StoreApplication {
             boolean isSelectedNumberInValid = true;
             while (isSelectedNumberInValid) {
                 int selectedNumber = context.getNumberScanner().nextInt();
-                if (selectedNumber == 1 || selectedNumber == 2 || selectedNumber == 3) {
+                if (selectedNumber == 1 || selectedNumber == 2 ) {
                     isSelectedNumberInValid = false;
                     redirectUser(selectedNumber, context);
-                } else if (selectedNumber == 4) {
+                } else if (selectedNumber == 3) {
                     isSelectedNumberInValid = false;
                     context.getMenu().showExitMessage();
                     globalLoop = false;

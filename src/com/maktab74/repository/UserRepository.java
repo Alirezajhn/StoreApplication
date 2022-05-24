@@ -10,20 +10,24 @@ public class UserRepository {
     public UserRepository(Connection connection) {
         this.connection = connection;
     }
+
     public User insert(User user) throws SQLException {
         String insertQuery = "insert into user(" +
-                "username, phonenumber,firstname,lastname,email,address,password" +
-                ") values (? ,?, ?, ? ,? , ?, ?)";
+                "username, phonenumber,firstname,lastname,email,province,street,city,postalcode,password" +
+                ") values (? ,?, ?, ? ,? , ?, ? , ? , ?,?)";
 
         PreparedStatement preparedStatement =
                 connection.prepareStatement(insertQuery);
         preparedStatement.setString(1, user.getUsername());
         preparedStatement.setString(2, user.getPhoneNumber());
         preparedStatement.setString(3, user.getFirstName());
-        preparedStatement.setString(4,user.getLastName());
-        preparedStatement.setString(5,user.getEmail());
-      // preparedStatement.setString(6,user.getAddress);
-        preparedStatement.setString(7, user.getPassword());
+        preparedStatement.setString(4, user.getLastName());
+        preparedStatement.setString(5, user.getEmail());
+        preparedStatement.setString(6, user.getProvince());
+        preparedStatement.setString(7, user.getStreet());
+        preparedStatement.setString(8, user.getCity());
+        preparedStatement.setString(9, user.getPostalCode());
+        preparedStatement.setString(10,user.getPassword());
         preparedStatement.executeUpdate();
 
         user.setId(getMaxId());
@@ -65,7 +69,7 @@ public class UserRepository {
         return null;
     }
 
-    public void update(User user) throws SQLException{
+    public void update(User user) throws SQLException {
         String query = "update user set " +
                 "password=? where id = ?";
 
@@ -75,7 +79,7 @@ public class UserRepository {
         preparedStatement.executeUpdate();
     }
 
-    public int getUserByUsername(String username) throws SQLException{
+    public int getUserByUsername(String username) throws SQLException {
         String query = "select * from user where username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1, username);
