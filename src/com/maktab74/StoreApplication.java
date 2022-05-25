@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 public class StoreApplication {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException, ParseException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         ApplicationContext context = new ApplicationContext();
 
         context.getDatabaseInitializer().init();
@@ -111,9 +111,9 @@ public class StoreApplication {
 
     private static boolean checkUsername(ApplicationContext context, String username) throws SQLException {
         boolean flag = false;
-        if(checkForDuplicateUsername(context,username)) {
+        if (checkForDuplicateUsername(context, username)) {
             context.getMenu().showTakenUsernameMessage();
-            flag=true;
+            flag = true;
         }
         return flag;
     }
@@ -123,10 +123,10 @@ public class StoreApplication {
         boolean isSelectedNumberInValid = true;
         while (isSelectedNumberInValid) {
             int selectedNumber = context.getNumberScanner().nextInt();
-            if (selectedNumber == 1 || selectedNumber == 2 || selectedNumber == 3) {
+            if (selectedNumber == 1 || selectedNumber == 2 || selectedNumber == 3 || selectedNumber == 4 || selectedNumber == 5) {
                 showUserSelectedPage(selectedNumber, context);
                 context.getMenu().showUserPanelMenu();
-            } else if (selectedNumber == 4) {
+            } else if (selectedNumber == 6) {
                 isSelectedNumberInValid = false;
                 context.getMenu().showLogoutMessage();
                 context.getSecurityContext().logout();
@@ -147,16 +147,20 @@ public class StoreApplication {
 
     private static void showUserSelectedPage(int selectedNumber, ApplicationContext context) throws SQLException {
         if (selectedNumber == 1) {
-            context.getMenu().showUserProfile( 
+            context.getMenu().showUserProfile(
                     context.getSecurityContext().getCurrentUser()
             );
             selectedNumber = context.getNumberScanner().nextInt();
-            if (selectedNumber == 1){
+            if (selectedNumber == 1) {
 
             }
         } else if (selectedNumber == 2) {
 
-        } else {
+        } else if(selectedNumber==3){
+
+        }else if (selectedNumber==4){
+
+        }else if (selectedNumber==5){
 
         }
     }

@@ -1,15 +1,29 @@
 package com.maktab74.domain;
 
-public class Basket extends Base{
-    private int  userId;
+public class Basket extends Base {
     private int productId;
-    private int numberItem;
     private String category;
+//    private Radio radio;
+//    private Tv tv;
+//    private ReadableItems readableItems;
+//    private Shoes shoes;
 
-    public Basket(int id, int userId, int productId, int numberItem, String category) {
+    private int userId;
+//    private User user;
+
+    private int numberItem;
+
+
+    //basket to user: one to one
+    //basket to product: one to many
+    public Basket() {
+
+    }
+
+    public Basket(int id, int productId, int userId, int numberItem, String category) {
         super(id);
-        this.userId = userId;
         this.productId = productId;
+        this.userId = userId;
         this.numberItem = numberItem;
         this.category = category;
     }
@@ -45,4 +59,5 @@ public class Basket extends Base{
     public void setCategory(String category) {
         this.category = category;
     }
+
 }

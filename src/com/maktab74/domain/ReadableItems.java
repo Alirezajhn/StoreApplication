@@ -1,24 +1,30 @@
 package com.maktab74.domain;
 
-public  class ReadableItems extends Product{
+public class ReadableItems extends Product {
     private String title;
     private String brief;
     private String content;
     private String publisher;
     private String typeItems;
+    private Basket basket;
 
-    public ReadableItems(int id, int unit, int price, String title, String brief, String content, String publisher, String typeItems) {
+    public ReadableItems() {
+
+    }
+
+    public ReadableItems(int id, int unit, int price, String title, String brief, String content, String publisher, String typeItems, Basket basket) {
         super(id, unit, price);
         this.title = title;
         this.brief = brief;
         this.content = content;
         this.publisher = publisher;
         this.typeItems = typeItems;
+        this.basket = basket;
     }
 
     public String getTypeItems() {
-       return typeItems;
-   }
+        return typeItems;
+    }
 
     public void setTypeItems(String typeItems) {
         this.typeItems = typeItems;
@@ -54,5 +60,13 @@ public  class ReadableItems extends Product{
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
     }
 }

@@ -1,5 +1,7 @@
 package com.maktab74.repository;
 
+import com.maktab74.domain.Basket;
+
 import java.sql.Connection;
 
 public class BasketRepository {
@@ -8,4 +10,5 @@ public class BasketRepository {
     public BasketRepository(Connection connection) {
         this.connection = connection;
     }
+
 }

@@ -43,10 +43,12 @@ public class Menu {
     }
 
     public void showUserPanelMenu() {
-        System.out.println("1: show all products");
+        System.out.println("1: show all products with unit and price (list of items)");
         System.out.println("2: add product from basket");
         System.out.println("3: delete product from basket");
-        System.out.println("4: logout");
+        System.out.println("4; print all add product to basket with unit and total price");
+        System.out.println("5: final confirmation of basket");
+        System.out.println("6: logout");
         System.out.print("please choose a number:");
     }
 

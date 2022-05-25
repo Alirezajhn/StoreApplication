@@ -1,15 +1,20 @@
 package com.maktab74.domain;
 
-public  class Shoes extends Product {
+public class Shoes extends Product {
     private String sizeShoes;
     private String color;
     private String typeShoes;
+    private Basket basket;
 
-    public Shoes(int id, int unit, int price, String sizeShoes, String color, String typeShoes) {
+    public Shoes() {
+    }
+
+    public Shoes(int id, int unit, int price, String sizeShoes, String color, String typeShoes, Basket basket) {
         super(id, unit, price);
         this.sizeShoes = sizeShoes;
         this.color = color;
         this.typeShoes = typeShoes;
+        this.basket = basket;
     }
 
     public String getSizeShoes() {
@@ -34,5 +39,13 @@ public  class Shoes extends Product {
 
     public void setTypeShoes(String typeShoes) {
         this.typeShoes = typeShoes;
+    }
+
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
     }
 }

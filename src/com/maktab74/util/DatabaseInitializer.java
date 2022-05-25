@@ -43,7 +43,7 @@ public class DatabaseInitializer {
 
     private void initUserTable() throws SQLException {
         String createUserTable =
-                "create table if not exists user" +
+                "create table if not exists user_table" +
                         "(" +
                         "id int not null unique auto_increment," +
                         "username varchar(255) unique," +
@@ -69,10 +69,10 @@ public class DatabaseInitializer {
                 "create table if not exists basket" +
                         "(" +
                         "id int not null unique auto_increment," +
-                        "category varchar(255) ," +
-                        "numberitem int ," +
-                        "user_id int," +
                         "product_id int," +
+                        "user_id int," +
+                        "numberitem int ," +
+                        "category varchar(255) ," +
                         "primary key (id)" +
                         ")";
 
@@ -85,13 +85,15 @@ public class DatabaseInitializer {
                 "create table if not exists radio" +
                         "(" +
                         "id int not null unique auto_increment," +
-                        "waverange varchar(255) ," +
+                        "unit int," +
+                        "price int," +
                         "powersource varchar (255) , " +
                         "brand varchar(255) ," +
                         "model varchar (255)," +
-                        "price int," +
-                        "unit int," +
+                        "waverange varchar(255) ," +
+                        "basket_radio_id int,"+
                         "primary key (id)" +
+                        "FOREIGN KEY (basket_radio_id) REFERENCES basket(id)," +
                         ")";
 
         Statement statement = connection.createStatement();
@@ -103,14 +105,16 @@ public class DatabaseInitializer {
                 "create table if not exists readableitems" +
                         "(" +
                         "id int not null unique auto_increment," +
+                        "unit int," +
+                        "price int," +
                         "title varchar(255), " +
                         "brief varchar(255), " +
                         "content varchar (255) , " +
                         "publisher varchar(255) ," +
                         "typeItems varchar (255)," +
-                        "price int," +
-                        "unit int," +
+                        "basket-readableitem_id int,"+
                         "primary key (id)" +
+                        "FOREIGN KEY (basket-readableitem_id) REFERENCES basket(id)," +
                         ")";
 
         Statement statement = connection.createStatement();
@@ -122,14 +126,14 @@ public class DatabaseInitializer {
                 "create table if not exists shoes" +
                         "(" +
                         "id int not null unique auto_increment," +
-                        "sizeShoes varchar(255), " +
-                        "typeshoes varchar(255)," +
-                        "color varchar (255), " +
-                        "brand varchar(255)," +
-                        "model varchar (255)," +
-                        "price int," +
                         "unit int," +
+                        "price int," +
+                        "sizeShoes varchar(255), " +
+                        "color varchar (255), " +
+                        "typeshoes varchar(255)," +
+                        "basket_shoes_id int,"+
                         "primary key (id)" +
+                        "FOREIGN KEY (basket_shoes_id) REFERENCES basket(id)," +
                         ")";
 
         Statement statement = connection.createStatement();
@@ -141,14 +145,16 @@ public class DatabaseInitializer {
                 "create table if not exists tv" +
                         "(" +
                         "id int not null unique auto_increment," +
-                        "screensize varchar(255) ," +
-                        "qualityresolution varchar(255) ," +
+                        "unit int," +
+                        "price int," +
                         "powersource varchar (255) , " +
                         "brand varchar(255) ," +
                         "model varchar (255)," +
-                        "price int," +
-                        "unit int," +
+                        "screensize varchar(255) ," +
+                        "qualityresolution varchar(255) ," +
+                        "basket_tv_id int,"+
                         "primary key (id)" +
+                        "FOREIGN KEY (basket_tv_id) REFERENCES basket(id)," +
                         ")";
 
         Statement statement = connection.createStatement();
