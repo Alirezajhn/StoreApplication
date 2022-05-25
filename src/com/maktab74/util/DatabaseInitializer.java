@@ -51,10 +51,10 @@ public class DatabaseInitializer {
                         "lastname varchar (255) , " +
                         "phonenumber varchar(255) unique," +
                         "email varchar (255)," +
-                        "postalcode varchar (255)," +
                         "province varchar (255)," +
-                        "city varchar (255)," +
                         "street varchar (255)," +
+                        "city varchar (255)," +
+                        "postalcode varchar (255)," +
                         "password varchar(255)," +
                         "primary key (id)" +
                         ")";

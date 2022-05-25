@@ -11,6 +11,7 @@ public class Menu {
         System.out.print("please choose a number: ");
 
     }
+
     //User
     public void showFillInformationMessage() {
         System.out.println("please fill your information");
@@ -26,21 +27,7 @@ public class Menu {
 
     public void showLoginSuccessMessage(User currentUser) {
         System.out.println("login successfully done");
-    }
-    public void showShortUsernameMessage() {
-        System.out.println(" short username!!!");
-    }
-
-    public void showUnderlineErrorMessage() {
-        System.out.println("the first and last username should not be underline!!!");
-    }
-    public void showChangePasswordMessage() {
-        System.out.println("1: change password");
-        System.out.println("2: exit");
-        System.out.print("plz choose a number:");
-    }
-    public void showNotStandardUsernameMessage() {
-        System.out.println("this is not a standard username!!!");
+        System.out.println("Welcome" + currentUser.getFirstName() + " " + currentUser.getLastName());
     }
 
     public void showTakenUsernameMessage() {

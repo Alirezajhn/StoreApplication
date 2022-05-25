@@ -13,15 +13,15 @@ public class UserRepository {
 
     public User insert(User user) throws SQLException {
         String insertQuery = "insert into user(" +
-                "username, phonenumber,firstname,lastname,email,province,street,city,postalcode,password" +
+                "username, firstname ,lastname , phonenumber,email,province,street,city,postalcode,password" +
                 ") values (? ,?, ?, ? ,? , ?, ? , ? , ?, ?)";
 
         PreparedStatement preparedStatement =
                 connection.prepareStatement(insertQuery);
         preparedStatement.setString(1, user.getUsername());
-        preparedStatement.setString(2, user.getPhoneNumber());
-        preparedStatement.setString(3, user.getFirstName());
-        preparedStatement.setString(4, user.getLastName());
+        preparedStatement.setString(2, user.getFirstName());
+        preparedStatement.setString(3, user.getLastName());
+        preparedStatement.setString(4, user.getPhoneNumber());
         preparedStatement.setString(5, user.getEmail());
         preparedStatement.setString(6, user.getProvince());
         preparedStatement.setString(7, user.getStreet());
@@ -52,7 +52,7 @@ public class UserRepository {
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()) {
             return new User(
-                    resultSet.getInt(1),
+                    resultSet.getInt(1 ),
                     resultSet.getString(2),
                     resultSet.getString(3),
                     resultSet.getString(4),
@@ -67,17 +67,7 @@ public class UserRepository {
         }
         return null;
     }
-
-    public void update(User user) throws SQLException {
-        String query = "update user set " +
-                "password=? where id = ?";
-
-        PreparedStatement preparedStatement = connection.prepareStatement(query);
-        preparedStatement.setString(1, user.getPassword());
-        preparedStatement.setInt(2, user.getId());
-        preparedStatement.executeUpdate();
-    }
-
+///////////////////for check username in database//////////////////////////////////////
     public int getUserByUsername(String username) throws SQLException {
         String query = "select * from user where username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -86,8 +76,8 @@ public class UserRepository {
         if (resultSet.next()) {
             return 1;
         }
-
         return 0;
     }
+
 }
 

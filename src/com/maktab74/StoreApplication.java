@@ -34,7 +34,7 @@ public class StoreApplication {
     }
 
     private static void redirectUser(int selectedNumber, ApplicationContext context)
-            throws SQLException, ParseException {
+            throws SQLException {
         if (selectedNumber == 1) {
             boolean isLoginSuccess = login(context);
             if (isLoginSuccess) {
@@ -66,7 +66,7 @@ public class StoreApplication {
         }
     }
 
-    private static void signUp(ApplicationContext context) throws SQLException, ParseException {
+    private static void signUp(ApplicationContext context) throws SQLException {
         boolean flag = false;
         User user = new User();
         context.getMenu().showFillInformationMessage();
@@ -110,15 +110,12 @@ public class StoreApplication {
     }
 
     private static boolean checkUsername(ApplicationContext context, String username) throws SQLException {
-        boolean find = false;
-            if (find)
-                context.getMenu().showNotStandardUsernameMessage();
-            else {
-                find = checkForDuplicateUsername(context, username);
-                if (find)
-                    context.getMenu().showTakenUsernameMessage();
-            }
-        return find;
+        boolean flag = false;
+        if(checkForDuplicateUsername(context,username)) {
+            context.getMenu().showTakenUsernameMessage();
+            flag=true;
+        }
+        return flag;
     }
 
     private static void redirectUserToPanel(ApplicationContext context) throws SQLException {
@@ -148,24 +145,15 @@ public class StoreApplication {
     }
 
 
-    private static void getEditCurrentUserPassword(ApplicationContext context) throws SQLException {
-        User user = context.getSecurityContext().getCurrentUser();
-
-        context.getMenu().showEnterPasswordMessage();
-        user.setPassword(context.getStringScanner().nextLine());
-
-        context.getUserRepository().update(user);
-    }
-
     private static void showUserSelectedPage(int selectedNumber, ApplicationContext context) throws SQLException {
         if (selectedNumber == 1) {
-            context.getMenu().showUserProfile(
+            context.getMenu().showUserProfile( 
                     context.getSecurityContext().getCurrentUser()
             );
-            context.getMenu().showChangePasswordMessage();
             selectedNumber = context.getNumberScanner().nextInt();
-            if (selectedNumber == 1)
-                getEditCurrentUserPassword(context);
+            if (selectedNumber == 1){
+
+            }
         } else if (selectedNumber == 2) {
 
         } else {

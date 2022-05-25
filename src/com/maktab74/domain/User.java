@@ -16,10 +16,10 @@ public class User extends Base {
 
     }
 
-    public User(int id, String username, String password, String firstName, String lastName, String phoneNumber, String email, String province, String city, String street, String postalCode) {
+    public User(int id, String username, String firstName, String lastName, String phoneNumber, String email, String province, String city, String street, String postalCode, String password) {
         super(id);
         this.username = username;
-        this.password = password;
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -28,6 +28,7 @@ public class User extends Base {
         this.city = city;
         this.street = street;
         this.postalCode = postalCode;
+        this.password = password;
     }
 
     @Override
