@@ -65,4 +65,35 @@ public class TvRepository {
         }
         return 0;
     }
+
+    public Tv insert(Tv tv) throws SQLException {
+        String insertQuery = "insert into user(" +
+                "unit, price ,powersource , brand , model, screensize ,qualityResolution, basket_tv_id" +
+                ") values (? ,?, ?, ? ,? , ?, ? ,?)";
+
+        PreparedStatement preparedStatement =
+                connection.prepareStatement(insertQuery);
+        preparedStatement.setInt(1, tv.getUnit());
+        preparedStatement.setInt(2, tv.getPrice());
+        preparedStatement.setString(3, tv.getPowerSource());
+        preparedStatement.setString(4, tv.getBrand());
+        preparedStatement.setString(5, tv.getModel());
+        preparedStatement.setString(6, tv.getScreenSize());
+        preparedStatement.setString(7, tv.getQualityResolution());
+        preparedStatement.setInt(8, tv.getBasket().getId());
+        preparedStatement.executeUpdate();
+        tv.setId(getMaxId());
+
+        return tv;
+    }
+
+    public int getMaxId() throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("select max(id) from tv");
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+        return 0;
+    }
+
 }

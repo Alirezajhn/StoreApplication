@@ -4,10 +4,7 @@ import com.maktab74.domain.Basket;
 import com.maktab74.domain.ReadableItems;
 import com.maktab74.domain.Shoes;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ReadableItemsRepository {
     private Connection connection;
@@ -63,6 +60,35 @@ public class ReadableItemsRepository {
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, basketId);
         ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+        return 0;
+    }
+    public ReadableItems insert(ReadableItems readableItems) throws SQLException {
+        String insertQuery = "insert into user(" +
+                "unit, price, title, brief, content, publisher, typeitems, basket_readableitems_id" +
+                ") values (? ,?, ?, ? ,? , ?, ?, ?)";
+
+        PreparedStatement preparedStatement =
+                connection.prepareStatement(insertQuery);
+        preparedStatement.setInt(1, readableItems.getUnit());
+        preparedStatement.setInt(2, readableItems.getPrice());
+        preparedStatement.setString(3, readableItems.getTitle());
+        preparedStatement.setString(4, readableItems.getBrief());
+        preparedStatement.setString(5, readableItems.getContent());
+        preparedStatement.setString(6, readableItems.getPublisher());
+        preparedStatement.setString(7, readableItems.getTypeItems());
+        preparedStatement.setInt(8, readableItems.getBasket().getId());
+        preparedStatement.executeUpdate();
+        readableItems.setId(getMaxId());
+
+        return readableItems;
+    }
+
+    public int getMaxId() throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("select max(id) from readableitems");
         if (resultSet.next()) {
             return resultSet.getInt(1);
         }

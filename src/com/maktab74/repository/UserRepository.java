@@ -37,7 +37,7 @@ public class UserRepository {
 
     public int getMaxId() throws SQLException {
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("select max(id) from user");
+        ResultSet resultSet = statement.executeQuery("select max(id) from user_table");
         if (resultSet.next()) {
             return resultSet.getInt(1);
         }

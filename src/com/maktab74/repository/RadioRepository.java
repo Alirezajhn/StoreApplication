@@ -4,10 +4,7 @@ import com.maktab74.domain.Basket;
 import com.maktab74.domain.Radio;
 import com.maktab74.domain.ReadableItems;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class RadioRepository {
     private Connection connection;
@@ -62,6 +59,34 @@ public class RadioRepository {
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, basketId);
         ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+        return 0;
+    }
+    public Radio insert(Radio radio) throws SQLException {
+        String insertQuery = "insert into user(" +
+                "unit, price ,powersource , brand , model, waverange, basket_radio_id" +
+                ") values (? , ?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement preparedStatement =
+                connection.prepareStatement(insertQuery);
+        preparedStatement.setInt(1, radio.getUnit());
+        preparedStatement.setInt(2, radio.getPrice());
+        preparedStatement.setString(3, radio.getPowerSource());
+        preparedStatement.setString(4, radio.getBrand());
+        preparedStatement.setString(5, radio.getModel());
+        preparedStatement.setString(6, radio.getWaveRange());
+        preparedStatement.setInt(7, radio.getBasket().getId());
+        preparedStatement.executeUpdate();
+        radio.setId(getMaxId());
+
+        return radio;
+    }
+
+    public int getMaxId() throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("select max(id) from radio");
         if (resultSet.next()) {
             return resultSet.getInt(1);
         }
