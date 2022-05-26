@@ -114,7 +114,7 @@ public class DatabaseInitializer {
                         "typeItems varchar (255)," +
                         "basket-readableitems_id int,"+
                         "primary key (id)" +
-                        "FOREIGN KEY (basket-readableitems_id) REFERENCES basket(id)," +
+                        "FOREIGN KEY (basket_readableitems_id) REFERENCES basket(id)," +
                         ")";
 
         Statement statement = connection.createStatement();

@@ -1,6 +1,8 @@
 package com.maktab74.util;
 
-import com.maktab74.repository.UserRepository;
+import com.maktab74.domain.Radio;
+import com.maktab74.domain.ReadableItems;
+import com.maktab74.repository.*;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -19,6 +21,16 @@ public class ApplicationContext {
     private UserRepository userRepository = null;
 
     private SecurityContext securityContext = new SecurityContext();
+
+    private TvRepository tvRepository = null;
+
+    private RadioRepository radioRepository = null;
+
+    private ShoesRepository shoesRepository = null;
+
+    private ReadableItemsRepository readableItemsRepository = null;
+
+    private BasketRepository basketRepository = null;
 
 
     public ApplicationContext() throws SQLException, ClassNotFoundException {
@@ -68,4 +80,38 @@ public class ApplicationContext {
         return securityContext;
     }
 
+    public TvRepository getTvRepository() {
+        if (tvRepository == null) {
+            this.tvRepository = new TvRepository(databaseUtil.getConnection());
+        }
+        return tvRepository;
+    }
+
+    public RadioRepository getRadioRepository() {
+        if (radioRepository == null) {
+            this.radioRepository = new RadioRepository(databaseUtil.getConnection());
+        }
+        return radioRepository;
+    }
+
+    public ShoesRepository getShoesRepository() {
+        if (shoesRepository == null) {
+            this.shoesRepository = new ShoesRepository(databaseUtil.getConnection());
+        }
+        return shoesRepository;
+    }
+
+    public ReadableItemsRepository getReadableItemsRepository() {
+        if (readableItemsRepository == null) {
+            this.readableItemsRepository = new ReadableItemsRepository(databaseUtil.getConnection());
+        }
+        return readableItemsRepository;
+    }
+
+    public BasketRepository getBasketRepository() {
+        if (basketRepository == null) {
+            this.basketRepository = new BasketRepository(databaseUtil.getConnection());
+        }
+        return basketRepository;
+    }
 }

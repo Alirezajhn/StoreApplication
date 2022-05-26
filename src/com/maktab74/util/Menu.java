@@ -95,4 +95,20 @@ public class Menu {
     public void showEnterPostalCodeMessage() {
         System.out.println("please enter your postalCode: ");
     }
+
+    public void showEmptyTvMessage() {
+        System.out.println("there is no tvs!!!");
+    }
+
+    public void showEmptyShoesMessage() {
+        System.out.println("there is no shoes!!!");
+    }
+
+    public void showEmptyReadableItemsMessage() {
+        System.out.println("there is no readableItems!!!");
+    }
+
+    public void showEmptyRadioMessage() {
+        System.out.println("there is no radios!!!!!");
+    }
 }
