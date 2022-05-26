@@ -4,8 +4,6 @@ public class Radio extends ElectricalAppliances {
     private String waveRange;
     private Basket basket;
 
-
-
     public Radio() {
 
     }
@@ -29,5 +27,13 @@ public class Radio extends ElectricalAppliances {
 
     public void setBasket(Basket basket) {
         this.basket = basket;
+    }
+
+    @Override
+    public String toString() {
+        return "Radio{" +
+                "waveRange='" + waveRange + '\'' +
+                ", basket=" + basket +
+                '}';
     }
 }

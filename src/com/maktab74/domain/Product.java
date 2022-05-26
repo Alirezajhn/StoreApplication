@@ -29,4 +29,12 @@ public abstract class Product extends Base {
     public void setPrice(int price) {
         Price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "Unit=" + Unit +
+                ", Price=" + Price +
+                '}';
+    }
 }

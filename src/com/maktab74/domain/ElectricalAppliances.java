@@ -39,4 +39,13 @@ public abstract class ElectricalAppliances extends Product {
     public void setModel(String model) {
         this.model = model;
     }
+
+    @Override
+    public String toString() {
+        return "ElectricalAppliances{" +
+                "powerSource='" + powerSource + '\'' +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                '}';
+    }
 }

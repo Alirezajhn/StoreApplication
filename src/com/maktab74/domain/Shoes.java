@@ -48,4 +48,14 @@ public class Shoes extends Product {
     public void setBasket(Basket basket) {
         this.basket = basket;
     }
+
+    @Override
+    public String toString() {
+        return "Shoes{" +
+                "sizeShoes='" + sizeShoes + '\'' +
+                ", color='" + color + '\'' +
+                ", typeShoes='" + typeShoes + '\'' +
+                ", basket=" + basket +
+                '}';
+    }
 }

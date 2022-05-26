@@ -69,4 +69,16 @@ public class ReadableItems extends Product {
     public void setBasket(Basket basket) {
         this.basket = basket;
     }
+
+    @Override
+    public String toString() {
+        return "ReadableItems{" +
+                "title='" + title + '\'' +
+                ", brief='" + brief + '\'' +
+                ", content='" + content + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", typeItems='" + typeItems + '\'' +
+                ", basket=" + basket +
+                '}';
+    }
 }

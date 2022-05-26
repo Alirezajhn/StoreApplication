@@ -60,4 +60,13 @@ public class Basket extends Base {
         this.category = category;
     }
 
+    @Override
+    public String toString() {
+        return "Basket{" +
+                "productId=" + productId +
+                ", category='" + category + '\'' +
+                ", userId=" + userId +
+                ", numberItem=" + numberItem +
+                '}';
+    }
 }

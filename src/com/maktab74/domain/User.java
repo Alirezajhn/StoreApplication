@@ -31,22 +31,6 @@ public class User extends Base {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", province='" + province + '\'' +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                '}';
-    }
-
     public String getProvince() {
         return province;
     }
@@ -127,4 +111,19 @@ public class User extends Base {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                '}';
+    }
 }

@@ -40,4 +40,13 @@ public class Tv extends ElectricalAppliances {
     public void setBasket(Basket basket) {
         this.basket = basket;
     }
+
+    @Override
+    public String toString() {
+        return "Tv{" +
+                "screenSize='" + screenSize + '\'' +
+                ", qualityResolution='" + qualityResolution + '\'' +
+                ", basket=" + basket +
+                '}';
+    }
 }
