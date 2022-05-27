@@ -91,9 +91,7 @@ public class DatabaseInitializer {
                         "brand varchar(255) ," +
                         "model varchar (255)," +
                         "waverange varchar(255) ," +
-                        "basket_radio_id int,"+
                         "primary key (id)" +
-                        "FOREIGN KEY (basket_radio_id) REFERENCES basket(id)," +
                         ")";
 
         Statement statement = connection.createStatement();
@@ -112,9 +110,7 @@ public class DatabaseInitializer {
                         "content varchar (255) , " +
                         "publisher varchar(255) ," +
                         "typeItems varchar (255)," +
-                        "basket-readableitems_id int,"+
                         "primary key (id)" +
-                        "FOREIGN KEY (basket_readableitems_id) REFERENCES basket(id)," +
                         ")";
 
         Statement statement = connection.createStatement();
@@ -131,10 +127,10 @@ public class DatabaseInitializer {
                         "sizeShoes varchar(255), " +
                         "color varchar (255), " +
                         "typeshoes varchar(255)," +
-                        "basket_shoes_id int,"+
                         "primary key (id)" +
-                        "FOREIGN KEY (basket_shoes_id) REFERENCES basket(id)," +
                         ")";
+
+
 
         Statement statement = connection.createStatement();
         statement.executeUpdate(createShoesTable);
@@ -152,9 +148,7 @@ public class DatabaseInitializer {
                         "model varchar (255)," +
                         "screensize varchar(255) ," +
                         "qualityresolution varchar(255) ," +
-                        "basket_tv_id int,"+
                         "primary key (id)" +
-                        "FOREIGN KEY (basket_tv_id) REFERENCES basket(id)," +
                         ")";
 
         Statement statement = connection.createStatement();

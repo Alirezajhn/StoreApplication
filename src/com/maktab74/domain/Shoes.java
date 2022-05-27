@@ -4,17 +4,16 @@ public class Shoes extends Product {
     private String sizeShoes;
     private String color;
     private String typeShoes;
-    private Basket basket;
+
 
     public Shoes() {
     }
 
-    public Shoes(int id, int unit, int price, String sizeShoes, String color, String typeShoes, Basket basket) {
+    public Shoes(int id, int unit, int price, String sizeShoes, String color, String typeShoes) {
         super(id, unit, price);
         this.sizeShoes = sizeShoes;
         this.color = color;
         this.typeShoes = typeShoes;
-        this.basket = basket;
     }
 
     public String getSizeShoes() {
@@ -41,21 +40,14 @@ public class Shoes extends Product {
         this.typeShoes = typeShoes;
     }
 
-    public Basket getBasket() {
-        return basket;
-    }
-
-    public void setBasket(Basket basket) {
-        this.basket = basket;
-    }
 
     @Override
     public String toString() {
         return "Shoes{" +
+                super.toString()+
                 "sizeShoes='" + sizeShoes + '\'' +
                 ", color='" + color + '\'' +
                 ", typeShoes='" + typeShoes + '\'' +
-                ", basket=" + basket +
                 '}';
     }
 }

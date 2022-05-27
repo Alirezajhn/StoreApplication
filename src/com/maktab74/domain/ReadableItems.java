@@ -6,21 +6,20 @@ public class ReadableItems extends Product {
     private String content;
     private String publisher;
     private String typeItems;
-    private Basket basket;
+
 
     public ReadableItems() {
 
     }
 
-    public ReadableItems(int id, int unit, int price, String title, String brief, String content, String publisher, String typeItems, Basket basket) {
+    public ReadableItems(int id, int unit, int price, String title, String brief, String content, String publisher, String typeItems) {
         super(id, unit, price);
         this.title = title;
         this.brief = brief;
         this.content = content;
         this.publisher = publisher;
         this.typeItems = typeItems;
-        this.basket = basket;
-    }
+         }
 
     public String getTypeItems() {
         return typeItems;
@@ -62,23 +61,16 @@ public class ReadableItems extends Product {
         this.publisher = publisher;
     }
 
-    public Basket getBasket() {
-        return basket;
-    }
-
-    public void setBasket(Basket basket) {
-        this.basket = basket;
-    }
 
     @Override
     public String toString() {
         return "ReadableItems{" +
+                super.toString()+
                 "title='" + title + '\'' +
                 ", brief='" + brief + '\'' +
                 ", content='" + content + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", typeItems='" + typeItems + '\'' +
-                ", basket=" + basket +
-                '}';
+                   '}';
     }
 }

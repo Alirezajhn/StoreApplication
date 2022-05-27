@@ -12,21 +12,22 @@ public class BasketRepository {
         this.connection = connection;
     }
     public  Basket insert(Basket basket) throws SQLException {
-        String insertQuery = "insert into user(" +
+        String insertQuery = "insert into basket(" +
                 "productid, userid ,numberitem , category" +
                 ") values (? , ?, ?, ?)";
 
         PreparedStatement preparedStatement =
                 connection.prepareStatement(insertQuery);
-        preparedStatement.setInt(1, basket.getId());
-        preparedStatement.setInt(2, basket.getProductId());
-        preparedStatement.setInt(3, basket.getUserId());
+        preparedStatement.setInt(1, basket.getProductId());
+        preparedStatement.setInt(2, basket.getUserId());
+        preparedStatement.setInt(3, basket.getNumberItem());
         preparedStatement.setString(4, basket.getCategory());
         preparedStatement.executeUpdate();
         basket.setId(getMaxId());
 
         return basket;
     }
+
 
     public int getMaxId() throws SQLException {
         Statement statement = connection.createStatement();

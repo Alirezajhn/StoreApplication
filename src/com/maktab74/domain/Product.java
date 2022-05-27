@@ -33,6 +33,7 @@ public abstract class Product extends Base {
     @Override
     public String toString() {
         return "Product{" +
+                super.toString()+
                 "Unit=" + Unit +
                 ", Price=" + Price +
                 '}';

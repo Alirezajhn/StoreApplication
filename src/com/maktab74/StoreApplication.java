@@ -4,6 +4,8 @@ import com.maktab74.domain.*;
 import com.maktab74.util.ApplicationContext;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class StoreApplication {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -146,20 +148,13 @@ public class StoreApplication {
 
     private static void showUserSelectedPage(int selectedNumber, ApplicationContext context) throws SQLException {
         if (selectedNumber == 1) {
-            context.getMenu().showUserProfile(
-                    context.getSecurityContext().getCurrentUser()
-            );
-            selectedNumber = context.getNumberScanner().nextInt();
-            if (selectedNumber == 1) {
-                showAllTVs(context);
-                showAllShoes(context);
-                showAllReadableItems(context);
-                showAllRadios(context);
-            }
+            redirectUserToPanelProducts(context);
         } else if (selectedNumber == 2) {
+            redirectUserToPanelProducts(context);
+
 
         } else if (selectedNumber == 3) {
-            addProductInBasket(context);
+
         } else if (selectedNumber == 4) {
 
         } else if (selectedNumber == 5) {
@@ -167,54 +162,80 @@ public class StoreApplication {
         }
     }
 
-    private static void addProductInBasket(ApplicationContext context) {
+    private static void selectedProductId(ApplicationContext context) throws SQLException {
+        ArrayList<Shoes> allShoes = context.getShoesRepository().getAllShoes();
 
     }
 
+    private static void redirectUserToPanelProducts(ApplicationContext context) throws SQLException {
+        context.getMenu().showAllProductPanelMenu();
+        boolean isSelectedNumberInValid = true;
+        while (isSelectedNumberInValid) {
+            int selectedNumber = context.getNumberScanner().nextInt();
+            if (selectedNumber == 1 || selectedNumber == 2 || selectedNumber == 3 || selectedNumber == 4) {
+                showUserSelectedProduct(selectedNumber, context);
+                context.getMenu().showAllProductPanelMenu();
+            } else {
+                context.getMenu().showIncorrectNumberMessage();
+                context.getMenu().showAllProductPanelMenu();
+            }
+        }
+    }
+
+    private static void showUserSelectedProduct(int selectedNumber, ApplicationContext context) throws SQLException {
+        if (selectedNumber == 1) {
+            showAllTVs(context);
+        } else if (selectedNumber == 2) {
+            showAllRadios(context);
+        } else if (selectedNumber == 3) {
+            showAllReadableItems(context);
+        } else if (selectedNumber == 4) {
+            showAllShoes(context);
+        } else {
+            context.getMenu().showIncorrectNumberMessage();
+        }
+    }
+
     private static void showAllRadios(ApplicationContext context) throws SQLException {
-        Radio[] radios = context.getRadioRepository().getAllByProductBaseId(
-                context.getSecurityContext().getCurrentUser().getId());
-        if (radios.length == 0) {
+        ArrayList<Radio> allRadio = context.getRadioRepository().getAllRadio();
+        if (allRadio == null) {
             context.getMenu().showEmptyRadioMessage();
         } else {
-            for (int i = 0; i < radios.length; i++) {
-                System.out.println((i + 1) + ": " + radios[i]);
+            for (int i = 0; i < allRadio.size(); i++) {
+                System.out.println(allRadio.get(i));
             }
         }
     }
 
     private static void showAllReadableItems(ApplicationContext context) throws SQLException {
-        ReadableItems[] readableItems = context.getReadableItemsRepository().getAllByProductBaseId(
-                context.getSecurityContext().getCurrentUser().getId());
-        if (readableItems.length == 0) {
+        ArrayList<ReadableItems> allReadableItems = context.getReadableItemsRepository().getAllReadableItems();
+        if (allReadableItems == null) {
             context.getMenu().showEmptyReadableItemsMessage();
         } else {
-            for (int i = 0; i < readableItems.length; i++) {
-                System.out.println((i + 1) + ": " + readableItems[i]);
+            for (int i = 0; i < allReadableItems.size(); i++) {
+                System.out.println(allReadableItems.get(i));
             }
         }
     }
 
     private static void showAllShoes(ApplicationContext context) throws SQLException {
-        Shoes[] shoes = context.getShoesRepository().getAllByProductBaseId(
-                context.getSecurityContext().getCurrentUser().getId());
-        if (shoes.length == 0) {
+        ArrayList<Shoes> allShoes = context.getShoesRepository().getAllShoes();
+        if (allShoes == null) {
             context.getMenu().showEmptyShoesMessage();
         } else {
-            for (int i = 0; i < shoes.length; i++) {
-                System.out.println((i + 1) + ": " + shoes[i]);
+            for (int i = 0; i < allShoes.size(); i++) {
+                System.out.println(allShoes.get(i));
             }
         }
     }
 
     private static void showAllTVs(ApplicationContext context) throws SQLException {
-        Tv[] tvs = context.getTvRepository().getAllByProductBaseId(
-                context.getSecurityContext().getCurrentUser().getId());
-        if (tvs.length == 0) {
+        ArrayList<Tv> allTv = context.getTvRepository().getAllTv();
+        if (allTv == null) {
             context.getMenu().showEmptyTvMessage();
         } else {
-            for (int i = 0; i < tvs.length; i++) {
-                System.out.println((i + 1) + ": " + tvs[i]);
+            for (int i = 0; i < allTv.size(); i++) {
+                System.out.println(allTv.get(i));
             }
         }
     }

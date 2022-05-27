@@ -111,4 +111,11 @@ public class Menu {
     public void showEmptyRadioMessage() {
         System.out.println("there is no radios!!!!!");
     }
+
+    public void showAllProductPanelMenu() {
+        System.out.println("1.Tv");
+        System.out.println("2.Radio");
+        System.out.println("3.ReadableItems");
+        System.out.println("4.Shoes");
+    }
 }

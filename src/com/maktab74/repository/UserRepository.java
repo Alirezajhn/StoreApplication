@@ -12,7 +12,7 @@ public class UserRepository {
     }
 
     public User insert(User user) throws SQLException {
-        String insertQuery = "insert into user(" +
+        String insertQuery = "insert into user_table(" +
                 "username, firstname ,lastname , phonenumber,email,province,street,city,postalcode,password" +
                 ") values (? ,?, ?, ? ,? , ?, ? , ? , ?, ?)";
 
@@ -45,7 +45,7 @@ public class UserRepository {
     }
 
     public User getByUsernameAndPassword(String username, String password) throws SQLException {
-        String query = "select * from user where username = ? and password = ?";
+        String query = "select * from user_table where username = ? and password = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1, username);
         preparedStatement.setString(2, password);
@@ -69,7 +69,7 @@ public class UserRepository {
     }
 ///////////////////for check username in database//////////////////////////////////////
     public int getUserByUsername(String username) throws SQLException {
-        String query = "select * from user where username = ?";
+        String query = "select * from user_table where username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1, username);
         ResultSet resultSet = preparedStatement.executeQuery();

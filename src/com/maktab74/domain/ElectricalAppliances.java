@@ -43,6 +43,7 @@ public abstract class ElectricalAppliances extends Product {
     @Override
     public String toString() {
         return "ElectricalAppliances{" +
+                super.toString() +
                 "powerSource='" + powerSource + '\'' +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
