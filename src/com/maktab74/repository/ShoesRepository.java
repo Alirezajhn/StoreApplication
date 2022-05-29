@@ -19,7 +19,7 @@ public class ShoesRepository {
 
     public ArrayList<Shoes> getAllShoes() throws SQLException {
         String query =
-                "select * from shoes";
+                "select * from shoe";
         PreparedStatement statement = connection.prepareStatement(query);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
@@ -87,8 +87,8 @@ public class ShoesRepository {
     }*/
     public Shoes insert(Shoes shoes) throws SQLException {
         String insertQuery = "insert into user(" +
-                "unit, price, sizeshoes, color, typeshoes, basket_shoes_id" +
-                ") values (? ,?, ?, ? ,? , ?)";
+                "unit, price, sizeshoes, color, typeshoes" +
+                ") values (? ,?, ?, ? ,? )";
 
         PreparedStatement preparedStatement =
                 connection.prepareStatement(insertQuery);
@@ -105,7 +105,7 @@ public class ShoesRepository {
 
     public int getMaxId() throws SQLException {
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("select max(id) from shoes");
+        ResultSet resultSet = statement.executeQuery("select max(id) from shoe");
         if (resultSet.next()) {
             return resultSet.getInt(1);
         }

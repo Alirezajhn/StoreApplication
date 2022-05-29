@@ -2,6 +2,7 @@ package com.maktab74;
 
 import com.maktab74.domain.*;
 import com.maktab74.util.ApplicationContext;
+import com.mysql.cj.protocol.AuthenticationPlugin;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -137,6 +138,7 @@ public class StoreApplication {
             }
         }
     }
+
     private static void redirectUserToPanelProductsTwo(ApplicationContext context) throws SQLException {
         context.getMenu().showAllProductPanelMenu();
         boolean isSelectedNumberInValid = true;
@@ -165,16 +167,17 @@ public class StoreApplication {
             context.getMenu().showIncorrectNumberMessage();
         }
     }
+
     private static void showUserSelectedProductTwo(int selectedNumber, ApplicationContext context) throws SQLException {
         if (selectedNumber == 1) {
             showAllTVs(context);
-            selectedIdProductAndAddToBasket(context,"tv");
+            selectedIdProductAndAddToBasket(context, "tv");
         } else if (selectedNumber == 2) {
             showAllRadios(context);
             selectedIdProductAndAddToBasket(context, "radio");
         } else if (selectedNumber == 3) {
             showAllReadableItems(context);
-            selectedIdProductAndAddToBasket(context, "readableItems");
+            selectedIdProductAndAddToBasket(context, "readable_items");
         } else if (selectedNumber == 4) {
             showAllShoes(context);
             selectedIdProductAndAddToBasket(context, "shoe");
@@ -195,20 +198,27 @@ public class StoreApplication {
         if (selectedNumber == 1) {
             redirectUserToPanelProducts(context);
         } else if (selectedNumber == 2) {
-            redirectUserToPanelProductsTwo(context);
+            if (context.getBasketRepository().getAllCountBasket() < 5) {
+                redirectUserToPanelProductsTwo(context);
+            } else {
+                context.getMenu().showBasketIsFullMessage();
+            }
         } else if (selectedNumber == 3) {
             showAllProductBasket(context);
             selectedIDBasketForDelete(context);
         } else if (selectedNumber == 4) {
-
-        } else if (selectedNumber == 5) {
-
+            finallyConfirm(context);
         }
     }
 
-    private static void deleteProductInBasket(ApplicationContext context) {
-
+    private static void finallyConfirm(ApplicationContext context) throws SQLException {
+        ArrayList<Basket> baskets = context.getBasketRepository().getAllBasket();
+        for (int countRow = 0; countRow < baskets.size(); countRow++) {
+            context.getBasketRepository().update(baskets.get(countRow));
+        }
+        context.getBasketRepository().deleteAllBasket();
     }
+
 
 
 
@@ -226,7 +236,7 @@ public class StoreApplication {
         while (isSelectedNumberInValid) {
             int selectedNumber = context.getNumberScanner().nextInt();
             if (selectedNumber == 1 || selectedNumber == 2 || selectedNumber == 3 || selectedNumber == 4) {
-                showUserSelectedProduct(selectedNumber,context);
+                showUserSelectedProduct(selectedNumber, context);
                 isSelectedNumberInValid = false;
             } else {
                 context.getMenu().showIncorrectNumberMessage();
@@ -293,7 +303,6 @@ public class StoreApplication {
     }
 
     private static void selectedIdProductAndAddToBasket(ApplicationContext context, String category) throws SQLException {
-
         Basket basket = new Basket();
         context.getMenu().showEnterId();
         basket.setProductId(context.getNumberScanner().nextInt());
@@ -304,10 +313,11 @@ public class StoreApplication {
         context.getBasketRepository().insert(basket);
 
     }
-    private static void  selectedIDBasketForDelete(ApplicationContext context) throws SQLException {
-        Basket basket=new Basket();
+
+    private static void selectedIDBasketForDelete(ApplicationContext context) throws SQLException {
+        Basket basket = new Basket();
         context.getMenu().ShowEnterIdBasket();
         basket.setId(context.getNumberScanner().nextInt());
-        context.getBasketRepository().delete(basket);
+        context.getBasketRepository().deleteById(basket);
     }
 }

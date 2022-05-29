@@ -19,7 +19,7 @@ public class ReadableItemsRepository {
 
     public ArrayList<ReadableItems> getAllReadableItems() throws SQLException {
         String query =
-                "select * from readableitems";
+                "select * from readable_items";
         PreparedStatement statement = connection.prepareStatement(query);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
@@ -91,8 +91,8 @@ public class ReadableItemsRepository {
     }*/
     public ReadableItems insert(ReadableItems readableItems) throws SQLException {
         String insertQuery = "insert into user(" +
-                "unit, price, title, brief, content, publisher, typeitems, basket_readableitems_id" +
-                ") values (? ,?, ?, ? ,? , ?, ?, ?)";
+                "unit, price, title, brief, content, publisher, typeitems" +
+                ") values (? ,?, ?, ? ,? , ?, ?)";
 
         PreparedStatement preparedStatement =
                 connection.prepareStatement(insertQuery);
@@ -111,7 +111,7 @@ public class ReadableItemsRepository {
 
     public int getMaxId() throws SQLException {
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("select max(id) from readableitems");
+        ResultSet resultSet = statement.executeQuery("select max(id) from readable_items");
         if (resultSet.next()) {
             return resultSet.getInt(1);
         }

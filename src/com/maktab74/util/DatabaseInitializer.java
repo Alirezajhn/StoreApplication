@@ -100,7 +100,7 @@ public class DatabaseInitializer {
 
     private void initReadableItemsTable() throws SQLException {
         String createReadableItemsTable =
-                "create table if not exists readableitems" +
+                "create table if not exists readable_items" +
                         "(" +
                         "id int not null unique auto_increment," +
                         "unit int," +
@@ -119,7 +119,7 @@ public class DatabaseInitializer {
 
     private void initShoesTable() throws SQLException {
         String createShoesTable =
-                "create table if not exists shoes" +
+                "create table if not exists shoe" +
                         "(" +
                         "id int not null unique auto_increment," +
                         "unit int," +
