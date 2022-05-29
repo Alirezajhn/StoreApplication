@@ -26,10 +26,9 @@ public class RadioRepository {
             radio.setUnit(resultSet.getInt(2));
             radio.setPrice(resultSet.getInt(3));
             radio.setPowerSource(resultSet.getString(4));
-            radio.setPowerSource(resultSet.getString(5));
-            radio.setBrand(resultSet.getString(6));
-            radio.setModel(resultSet.getString(7));
-            radio.setWaveRange(resultSet.getString(8));
+            radio.setBrand(resultSet.getString(5));
+            radio.setModel(resultSet.getString(6));
+            radio.setWaveRange(resultSet.getString(7));
             radios.add(radio);
         }
         return radios;

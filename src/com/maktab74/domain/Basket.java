@@ -63,6 +63,7 @@ public class Basket extends Base {
     @Override
     public String toString() {
         return "Basket{" +
+                super.toString()+
                 "productId=" + productId +
                 ", category='" + category + '\'' +
                 ", userId=" + userId +

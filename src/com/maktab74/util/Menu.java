@@ -27,7 +27,7 @@ public class Menu {
 
     public void showLoginSuccessMessage(User currentUser) {
         System.out.println("login successfully done");
-        System.out.println("Welcome" + currentUser.getFirstName() + " " + currentUser.getLastName());
+        System.out.println("Welcome " + currentUser.getFirstName() + " " + currentUser.getLastName());
     }
 
     public void showTakenUsernameMessage() {
@@ -117,5 +117,22 @@ public class Menu {
         System.out.println("2.Radio");
         System.out.println("3.ReadableItems");
         System.out.println("4.Shoes");
+    }
+
+
+    public void showEmptyBasket() {
+        System.out.println("there is nothing in basket");
+    }
+
+    public void showNumberOfProduct() {
+        System.out.println("enter numberItem of product: ");
+    }
+
+    public void showEnterId() {
+        System.out.println("please enter id: ");
+    }
+
+    public void ShowEnterIdBasket() {
+        System.out.println("please enter basketId:");
     }
 }
